@@ -1,0 +1,15 @@
+[package]
+name = "hvif-rs"
+version = "0.1.0"
+authors = ["Ben Elliott <benjam.elliott@gmail.com>"]
+repository = "https://github.com/Lacaranian/hvif-rs.git"
+license = "MIT"
+readme = "README.md"
+description = "Read and write icons in the Haiku Vector Icon Format."
+
+[dependencies]
+clippy = {version = "0.0.21", optional = true}
+
+[features]
+default = []
+dev = ["clippy"]
