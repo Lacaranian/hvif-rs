@@ -168,21 +168,3 @@ pub enum HVIFTransformer {
   /// ?
   Stroke { #[doc="?"] width: f32, #[doc="?"] line_join: u8, #[doc="?"] line_cap: u8, #[doc="?"] miter_limit: u8 }
 }
-
-/// Test function
-fn empty_image() -> HVIFImage {
-  HVIFImage {
-    styles: Vec::new(),
-    paths:  Vec::new(),
-    shapes: Vec::new()
-  }
-}
-
-#[cfg(test)]
-mod tests {
-    use empty_image;
-    #[test]
-    fn it_works() {
-        empty_image();
-    }
-}
