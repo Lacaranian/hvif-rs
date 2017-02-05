@@ -20,41 +20,69 @@ pub struct HVIFImage {
 /// A single HVIF style
 pub enum HVIFStyle {
   /// A solid aRGB color
-  SolidColor { #[doc="alpha channel"] alpha: u8, #[doc="red channel"] red: u8, #[doc="green channel"] green: u8, #[doc="blue channel"] blue: u8 },
+  SolidColor {
+    #[doc="alpha channel"] alpha: u8,
+    #[doc="red channel"] red: u8,
+    #[doc="green channel"] green: u8,
+    #[doc="blue channel"] blue: u8
+  },
   /// A gradient between multiple aRGB colors
   Gradient(HVIFGradient),
   /// A solid opaque RGB color
-  SolidColorNoAlpha { #[doc="red channel"] red: u8, #[doc="green channel"] green: u8, #[doc="blue channel"] blue: u8 },
+  SolidColorNoAlpha {
+    #[doc="red channel"] red: u8,
+    #[doc="green channel"] green: u8,
+    #[doc="blue channel"] blue: u8
+  },
   /// A solid greyscale color with an alpha channel
-  SolidGray { #[doc="alpha channel"] alpha: u8, #[doc="value on red, green, and blue channels"] value: u8},
+  SolidGray {
+    #[doc="alpha channel"] alpha: u8,
+    #[doc="value on red, green, and blue channels"] value: u8
+  },
   /// A solid greyscale color without an alpha channel
-  SolidGrayNoAlpha { #[doc="value on red, green, and blue channels"] value: u8 }
+  SolidGrayNoAlpha {
+    #[doc="value on red, green, and blue channels"] value: u8
+  }
 }
 
 #[derive(Debug)]
 /// A gradient between mutiple aRGB colors
 pub struct HVIFGradient {
-  gradient_type: HVIFGradientType,
-  flags: u8,
-  colors: Vec<HVIFGradientColor>
+  /// The type of the gradient
+  pub gradient_type: HVIFGradientType,
+  /// Flags modifiying the way the gradient is parsed
+  pub flags: u8,
+  /// A collection of the colors making up the gradient
+  pub colors: Vec<HVIFGradientColor>
 }
 
 #[derive(Debug, Copy, Clone)]
 /// The type of a gradient - determines how the gradient renders spatially
 pub enum HVIFGradientType {
   /// A linear gradient; follows a line from one point to another
-  Linear,
+  Linear   = 0,
   /// A circular gradient; changes radially from the center to the edge of a circular region
-  Circular,
+  Circular = 1,
   /// A diamond graident; changes linearly from the center to the edge of a diagonal region
-  Diamond,
+  Diamond  = 2,
   /// A conic gradient; changes angularly across a circular region
-  Conic,
+  Conic    = 3,
   /// An XY gradient; changes linearly in both the X and Y directions
-  XY,
+  XY       = 4,
   /// A square root XY gradient: changes quadratically in both the X and Y directions
-
-  SqrtXY
+  SqrtXY   = 5
+}
+/// Convert a u8 into a gradient type
+pub fn gradient_type_from_u8(num: u8) -> Option<HVIFGradientType> {
+  match num {
+    0 => Some(HVIFGradientType::Linear),
+    1 => Some(HVIFGradientType::Circular),
+    2 => Some(HVIFGradientType::Diamond),
+    3 => Some(HVIFGradientType::Conic),
+    4 => Some(HVIFGradientType::XY),
+    5 => Some(HVIFGradientType::SqrtXY),
+    _ => None
+  }
 }
 
 #[derive(Debug, Copy, Clone)]
