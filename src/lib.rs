@@ -10,21 +10,29 @@
         unsafe_code,
         unstable_features,
         unused_import_braces, unused_qualifications)]
-#![cfg_attr(feature = "dev", allow(unstable_features))]
 #![cfg_attr(feature = "dev", feature(plugin))]
 #![cfg_attr(feature = "dev", plugin(clippy))]
 
+#![cfg_attr(feature = "core", allow(unstable_features))]
+#![cfg_attr(feature = "core", feature(no_std))]
+#![cfg_attr(feature = "core", feature(collections))]
+#![cfg_attr(feature = "core", no_std)]
+#[cfg(feature = "core")]
+extern crate collections;
 
-use std::io::{Bytes, Read, Result};
+#[macro_use]
+extern crate nom;
 
 pub use self::types::*;
 #[macro_use] mod types;
 
+use nom::*;
+//use std::str::from_utf8;
+
+
 /// Read an image from bytes
-fn read_from_bytes<R: Read>(readable: R) -> Result<HVIFImage> {
-  let bytes: Bytes<R> = readable.bytes();
+fn read_hvif_from_bytes(i: &[u8]) -> IResult<&[u8],HVIFImage> {
   unimplemented!()
 }
 
-
-
+named!(hvif_magic_number, tag!("ncif"));

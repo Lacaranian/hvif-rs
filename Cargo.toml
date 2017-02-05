@@ -10,9 +10,13 @@ description = "Read and write icons in the Haiku Vector Icon Format."
 [dependencies]
 clippy = {version = "0.0.21", optional = true}
 
+[dependencies.nom]
+version = "^2.1"
+
 [features]
 default = []
 dev = ["clippy"]
+core = ["nom/core"]
 
 [badges]
 travis-ci = { repository = "Lacaranian/hvif-rs" }

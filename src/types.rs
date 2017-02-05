@@ -1,13 +1,16 @@
 //! Types for HVIF images
 
-use std::collections::VecDeque;
+#[cfg(feature = "core")]
+use collections::vec::Vec;
+#[cfg(not(feature = "core"))]
+use std::vec::Vec;
 
 #[derive(Debug)]
 /// A fully specified HVIF image
 pub struct HVIFImage {
-  styles: VecDeque<HVIFStyle>,
-  paths: VecDeque<HVIFPath>,
-  shapes: VecDeque<HVIFShape>
+  styles: Vec<HVIFStyle>,
+  paths: Vec<HVIFPath>,
+  shapes: Vec<HVIFShape>
 }
 
 #[derive(Debug)]
@@ -30,7 +33,7 @@ pub enum HVIFStyle {
 pub struct HVIFGradient {
   gradient_type: HVIFGradientType,
   flags: u8,
-  colors: VecDeque<HVIFGradientColor>
+  colors: Vec<HVIFGradientColor>
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -79,7 +82,7 @@ pub struct HVIFGradientColor {
 /// An HVIF path, drawn between points
 pub struct HVIFPath {
   flags: u8,
-  points: VecDeque<HVIFPointCommand>
+  points: Vec<HVIFPointCommand>
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -114,12 +117,12 @@ pub struct HVIFPoint { x: f32, y: f32 }
 /// An HVIF shape, consisting of a single style, one or more paths, and optional additional transformation data
 pub struct HVIFShape {
   style_index: u8,
-  path_indices: VecDeque<u8>,
+  path_indices: Vec<u8>,
   flags: u8,
   transform: Option<HVIFMatrix>,
   translate: Option<HVIFPoint>,
   lod_scale: Option<HVIFLODScale>,
-  transformer_list: VecDeque<HVIFTransformer>
+  transformer_list: Vec<HVIFTransformer>
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -169,9 +172,9 @@ pub enum HVIFTransformer {
 /// Test function
 fn empty_image() -> HVIFImage {
   HVIFImage {
-    styles: VecDeque::new(),
-    paths:  VecDeque::new(),
-    shapes: VecDeque::new()
+    styles: Vec::new(),
+    paths:  Vec::new(),
+    shapes: Vec::new()
   }
 }
 

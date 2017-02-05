@@ -4,6 +4,8 @@
 
 A Rust library for reading or writing icons in the Haiku Vector Icon Format
 
+[Documentation](https://lacaranian.github.io/hvif-rs/hvif_rs/index.html)
+
 ## How to Use
 
 WIP - no code written yet!
