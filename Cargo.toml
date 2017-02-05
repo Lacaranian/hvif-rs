@@ -13,3 +13,6 @@ clippy = {version = "0.0.21", optional = true}
 [features]
 default = []
 dev = ["clippy"]
+
+[badges]
+travis-ci = { repository = "Lacaranian/hvif-rs" }
