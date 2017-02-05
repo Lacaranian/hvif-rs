@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![deny(missing_docs,
         missing_debug_implementations, missing_copy_implementations,
-        trivial_casts, trivial_numeric_casts,
+        trivial_casts,
         unsafe_code,
         unstable_features,
         unused_import_braces, unused_qualifications)]
@@ -24,15 +24,6 @@ extern crate collections;
 extern crate nom;
 
 pub use self::types::*;
+pub use self::parser::*;
 #[macro_use] mod types;
-
-use nom::*;
-//use std::str::from_utf8;
-
-
-/// Read an image from bytes
-fn read_hvif_from_bytes(i: &[u8]) -> IResult<&[u8],HVIFImage> {
-  unimplemented!()
-}
-
-named!(hvif_magic_number, tag!("ncif"));
+#[macro_use] mod parser;

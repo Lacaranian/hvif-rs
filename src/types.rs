@@ -8,9 +8,12 @@ use std::vec::Vec;
 #[derive(Debug)]
 /// A fully specified HVIF image
 pub struct HVIFImage {
-  styles: Vec<HVIFStyle>,
-  paths: Vec<HVIFPath>,
-  shapes: Vec<HVIFShape>
+  /// All styles belonging to this image
+  pub styles: Vec<HVIFStyle>,
+  /// All paths belonging to this image
+  pub paths: Vec<HVIFPath>,
+  /// All shapes belonging to this image
+  pub shapes: Vec<HVIFShape>
 }
 
 #[derive(Debug)]
@@ -68,21 +71,28 @@ pub enum GradientFlags {
 }
 
 #[derive(Debug, Copy, Clone)]
-/// Color of a gradient, along with a stop offset (distance between colors)
+/// Color of a gradient, along with a stop offset
 pub struct HVIFGradientColor {
-  stop_offset: u8,
-  alpha: u8,
-  red: u8,
-  green: u8,
-  blue: u8
+  /// The stop offset for this color - the "position" it holds relative to other colors in the gradient
+  pub stop_offset: u8,
+  /// The alpha channel
+  pub alpha: u8,
+  /// The red channel
+  pub red: u8,
+  /// The green channel
+  pub green: u8,
+  /// The blue channel
+  pub blue: u8
 }
 
 
 #[derive(Debug)]
 /// An HVIF path, drawn between points
 pub struct HVIFPath {
-  flags: u8,
-  points: Vec<HVIFPointCommand>
+  /// Flags that modify the nature of this path
+  pub flags: u8,
+  /// A list of commands that represent the sequence of points for this path
+  pub points: Vec<HVIFPointCommand>
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -116,13 +126,20 @@ pub struct HVIFPoint { x: f32, y: f32 }
 #[derive(Debug)]
 /// An HVIF shape, consisting of a single style, one or more paths, and optional additional transformation data
 pub struct HVIFShape {
-  style_index: u8,
-  path_indices: Vec<u8>,
-  flags: u8,
-  transform: Option<HVIFMatrix>,
-  translate: Option<HVIFPoint>,
-  lod_scale: Option<HVIFLODScale>,
-  transformer_list: Vec<HVIFTransformer>
+  /// The index of the style used in the shape
+  pub style_index: u8,
+  /// The indices of the paths that use this shape's style
+  pub path_indices: Vec<u8>,
+  /// Flags that modify the nature of this shape
+  pub flags: u8,
+  /// An optional transformation matrix
+  pub transform: Option<HVIFMatrix>,
+  /// An optional linear translation of the shape (offset)
+  pub translate: Option<HVIFPoint>,
+  /// An optional LOD range (limit on the scales the shape should be used in)
+  pub lod_scale: Option<HVIFLODScale>,
+  /// A list of optional transformers that affect this list
+  pub transformer_list: Vec<HVIFTransformer>
 }
 
 #[derive(Debug, Copy, Clone)]
