@@ -21,10 +21,10 @@ pub struct HVIFImage {
 pub enum HVIFStyle {
   /// A solid aRGB color
   SolidColor {
-    #[doc="alpha channel"] alpha: u8,
     #[doc="red channel"] red: u8,
     #[doc="green channel"] green: u8,
-    #[doc="blue channel"] blue: u8
+    #[doc="blue channel"] blue: u8,
+    #[doc="alpha channel"] alpha: u8,
   },
   /// A gradient between multiple aRGB colors
   Gradient(HVIFGradient),
@@ -32,12 +32,12 @@ pub enum HVIFStyle {
   SolidColorNoAlpha {
     #[doc="red channel"] red: u8,
     #[doc="green channel"] green: u8,
-    #[doc="blue channel"] blue: u8
+    #[doc="blue channel"] blue: u8,
   },
   /// A solid greyscale color with an alpha channel
   SolidGray {
+    #[doc="value on red, green, and blue channels"] value: u8,
     #[doc="alpha channel"] alpha: u8,
-    #[doc="value on red, green, and blue channels"] value: u8
   },
   /// A solid greyscale color without an alpha channel
   SolidGrayNoAlpha {
