@@ -10,8 +10,7 @@ use self::style::hvif_style;
 use self::path::hvif_path;
 use self::shape::hvif_shape;
 
-/// Parse an entire hvif image
-named!(hvif_image<&[u8], HVIFImage>,
+named_attr!(#[doc = "Parses an entire HVIF image"], pub hvif_image<&[u8], HVIFImage>,
   do_parse!(
     tag!("ncif") >>
     styles: hvif_styles >>

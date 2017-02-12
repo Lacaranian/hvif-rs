@@ -38,11 +38,11 @@ impl HVIFFlag {
 
 /// ?
 pub const HVIF_GRADIENT_FLAG_TRANSFORM     : HVIFFlag = HVIFFlag(0b0000_0001);
-/// ?
+/// The colors in this gradient have no alpha channel
 pub const HVIF_GRADIENT_FLAG_NO_ALPHA      : HVIFFlag = HVIFFlag(0b0000_0010);
-/// ?
+/// The colors in this gradient have a deeper color depth per channel of 16 bits, instead of 8
 pub const HVIF_GRADIENT_FLAG_COLORS_16_BIT : HVIFFlag = HVIFFlag(0b0000_0100);
-/// ?
+/// The colors in this gradient are all grayscale
 pub const HVIF_GRADIENT_FLAG_GRAYS         : HVIFFlag = HVIFFlag(0b0000_1000);
 
 /// The path's last point is connected to its first point
@@ -52,7 +52,7 @@ pub const HVIF_PATH_FLAG_USES_COMMANDS : HVIFFlag = HVIFFlag(0b0000_0010);
 /// The path is made up entirely of straight lines
 pub const HVIF_PATH_FLAG_NO_CURVES     : HVIFFlag = HVIFFlag(0b0000_0100);
 
-/// ?
+/// This shape uses an affine transformation matrix to translate, rotate, and scale itself
 pub const HVIF_SHAPE_FLAG_TRANSFORM        : HVIFFlag = HVIFFlag(0b0000_0001);
 /// ?
 pub const HVIF_SHAPE_FLAG_HINTING          : HVIFFlag = HVIFFlag(0b0000_0010);

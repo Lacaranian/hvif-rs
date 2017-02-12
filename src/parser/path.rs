@@ -22,8 +22,8 @@ fn hvif_path_parser_from_flags(input: &[u8], flags: u8, point_count: u8) -> IRes
     false => {
       let no_curves = HVIF_PATH_FLAG_NO_CURVES.is_set_on(flags);
       match no_curves {
-        true  => hvif_path_with_no_curves(input),
-        false => hvif_path_with_curves(input),
+        true  => count!(input, hvif_path_point_with_no_curves, point_count as usize),
+        false => count!(input, hvif_path_point_with_curves, point_count as usize),
       }
     },
   }
@@ -52,15 +52,19 @@ fn hvif_path_with_commands(input: &[u8], command_bytes: Vec<u8>) -> IResult<&[u8
   return IResult::Done(input, (vec![HVIFPointCommand::HLine { x: size as f32 }]))
 }
 
-named!(hvif_path_with_no_curves<&[u8], Vec<HVIFPointCommand>>,
+named!(hvif_path_point_with_no_curves<&[u8], HVIFPointCommand>,
   do_parse!(
-    (vec![HVIFPointCommand::HLine { x: 0.0 }])
+    point: hvif_path_point >>
+    (HVIFPointCommand::Line { point: point })
   )
 );
 
-named!(hvif_path_with_curves<&[u8], Vec<HVIFPointCommand>>,
+named!(hvif_path_point_with_curves<&[u8], HVIFPointCommand>,
   do_parse!(
-    (vec![HVIFPointCommand::HLine { x: 0.0 }])
+    point: hvif_path_point >>
+    point_in: hvif_path_point >>
+    point_out: hvif_path_point >>
+    (HVIFPointCommand::Curve { point_in: point_in, point: point, point_out: point_out } )
   )
 );
 
