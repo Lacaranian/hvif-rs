@@ -2,12 +2,11 @@
 use nom::*;
 use types::*;
 
-/// Parse the style type, then run a specific parser accordingly
 named_attr!(#[doc = "Parses an HVIF style"], pub hvif_style<&[u8], HVIFStyle>,
   do_parse!(
     style_type: be_u8 >>
-    apply!(style_type_to_parser, style_type) >>
-    (HVIFStyle::SolidGrayNoAlpha { value: 0 })
+    style: apply!(style_type_to_parser, style_type) >>
+    (style)
   )
 );
 
@@ -39,7 +38,6 @@ named!(hvif_style_gradient<&[u8], HVIFStyle>,
     colors: length_count!(be_u8, apply!(hvif_style_gradient_color_parser, flags)) >>
     (HVIFStyle::Gradient(HVIFGradient {
       gradient_type: gradient_type,
-      flags: flags,
       colors: colors
     }))
   )
@@ -77,9 +75,10 @@ fn hvif_style_gradient_color_parser(input: &[u8], flags: u8) -> IResult<&[u8], H
 
 fn hvif_style_gradient_color_rgb_parser(input: &[u8], flags: u8) -> IResult<&[u8], (u8, u8, u8)>
 {
-  let p = match flags & 0b0000_1000 {
-    0 => hvif_style_gradient_color_rgb_nongrays,
-    _ => hvif_style_gradient_color_rgb_grays
+  let grayscale = HVIF_GRADIENT_FLAG_GRAYS.is_set_on(flags);
+  let p = match grayscale {
+    true => hvif_style_gradient_color_rgb_grays,
+    false => hvif_style_gradient_color_rgb_nongrays,
   };
   p(input)
 }
@@ -88,9 +87,10 @@ named!(hvif_style_gradient_color_rgb_grays<&[u8], (u8,u8,u8)>, do_parse!(value: 
 
 fn hvif_style_gradient_color_alpha_parser(input: &[u8], flags: u8) -> IResult<&[u8], u8>
 {
-  let (rem_input, alpha) = match flags & 0b0000_0010 {
-    0 => try_parse!(input, be_u8),
-    _ => (input, 0b1111_1111)
+  let no_alpha = HVIF_GRADIENT_FLAG_NO_ALPHA.is_set_on(flags);
+  let (rem_input, alpha) = match no_alpha {
+    true  => (input, 0b1111_1111),
+    false => try_parse!(input, be_u8),
   };
 
   return IResult::Done(rem_input, alpha)

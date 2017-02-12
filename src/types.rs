@@ -16,6 +16,20 @@ pub struct HVIFImage {
   pub shapes: Vec<HVIFShape>
 }
 
+#[derive(Debug, Copy, Clone)]
+/// Flags that modify the parsing of the following data
+pub struct HVIFFlag(u8);
+impl From<HVIFFlag> for u8 { fn from(hpf: HVIFFlag) -> Self { hpf.0 }}
+impl HVIFFlag {
+  /// Checks whether the flag is set on a byte
+  pub fn is_set_on(&self, flags: u8) -> bool
+  {
+    let masked: u8 = flags & &self.clone().into();
+    masked != 0
+  }
+}
+
+
 #[derive(Debug)]
 /// A single HVIF style
 pub enum HVIFStyle {
@@ -50,8 +64,6 @@ pub enum HVIFStyle {
 pub struct HVIFGradient {
   /// The type of the gradient
   pub gradient_type: HVIFGradientType,
-  /// Flags modifiying the way the gradient is parsed
-  pub flags: u8,
   /// A collection of the colors making up the gradient
   pub colors: Vec<HVIFGradientColor>
 }
@@ -85,18 +97,16 @@ pub fn gradient_type_from_u8(num: u8) -> Option<HVIFGradientType> {
   }
 }
 
-#[derive(Debug, Copy, Clone)]
-/// Flags that modify the nature of a gradient
-pub enum GradientFlags {
-  /// ?
-  Transform       = 0b0000_0001,
-  /// ?
-  NoAlpha         = 0b0000_0010,
-  /// ?
-  Colors16Bit     = 0b0000_0100,
-  /// ?
-  Grays           = 0b0000_1000,
-}
+
+/// ?
+pub const HVIF_GRADIENT_FLAG_TRANSFORM     : HVIFFlag = HVIFFlag(0b0000_0001);
+/// ?
+pub const HVIF_GRADIENT_FLAG_NO_ALPHA      : HVIFFlag = HVIFFlag(0b0000_0010);
+/// ?
+pub const HVIF_GRADIENT_FLAG_COLORS_16_BIT : HVIFFlag = HVIFFlag(0b0000_0100);
+/// ?
+pub const HVIF_GRADIENT_FLAG_GRAYS         : HVIFFlag = HVIFFlag(0b0000_1000);
+
 
 #[derive(Debug, Copy, Clone)]
 /// Color of a gradient, along with a stop offset
@@ -123,16 +133,14 @@ pub struct HVIFPath {
   pub points: Vec<HVIFPointCommand>
 }
 
-#[derive(Debug, Copy, Clone)]
-/// Flags that modify the nature of a path
-pub enum HVIFPathFlags {
-  /// The path's last point is connected to its first point
-  Closed       = 0b0000_0001,
-  /// The path has a command section, and can use HLine and VLine commands
-  UsesCommands = 0b0000_0010,
-  /// The path is made up entirely of straight lines
-  NoCurves     = 0b0000_0100,
-}
+/// The path's last point is connected to its first point
+pub const HVIFPATH_FLAG_CLOSED         : HVIFFlag = HVIFFlag(0b0000_0001);
+/// The path has a command section, and can use HLine and VLine commands
+pub const HVIF_PATH_FLAG_USES_COMMANDS : HVIFFlag = HVIFFlag(0b0000_0010);
+/// The path is made up entirely of straight lines
+pub const HVIF_PATH_FLAG_NO_CURVES     : HVIFFlag = HVIFFlag(0b0000_0100);
+
+
 
 #[derive(Debug, Copy, Clone)]
 /// One or more points, and a command that specifies how the point/s are to be interpreted
