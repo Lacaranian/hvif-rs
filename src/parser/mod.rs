@@ -1,3 +1,4 @@
+//! Parsers for HVIF images
 pub mod style;
 pub mod path;
 pub mod shape;

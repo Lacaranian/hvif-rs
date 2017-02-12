@@ -1,3 +1,4 @@
+//! Types for HVIF styles
 
 #[derive(Debug)]
 /// A single HVIF style

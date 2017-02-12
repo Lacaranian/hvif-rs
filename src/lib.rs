@@ -23,7 +23,5 @@ extern crate collections;
 #[macro_use]
 extern crate nom;
 
-pub use self::types::*;
-pub use self::parser::*;
-#[macro_use] mod types;
-#[macro_use] mod parser;
+#[macro_use] pub mod types;
+#[macro_use] pub mod parser;

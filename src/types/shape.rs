@@ -1,3 +1,5 @@
+//! Types for HVIF shapes
+
 use types::path::*;
 
 #[derive(Debug)]

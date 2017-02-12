@@ -1,4 +1,4 @@
-use types::HVIFFlag;
+//! Types for HVIF paths
 
 #[derive(Debug)]
 /// An HVIF path, drawn between points

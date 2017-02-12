@@ -17,7 +17,7 @@ fn hvif_path_parser_from_flags(input: &[u8], flags: u8, point_count: u8) -> IRes
   match using_commands {
     true  => {
       let (rem_input, command_bytes) = try_parse!(input, apply!(hvif_path_command_headers, point_count));
-      hvif_path_with_commands(rem_input)
+      hvif_path_with_commands(rem_input, command_bytes)
     },
     false => {
       let no_curves = HVIF_PATH_FLAG_NO_CURVES.is_set_on(flags);
@@ -46,11 +46,11 @@ named!(hvif_path_command_header_chunk<&[u8], Vec<u8>>,
   )
 );
 
-named!(hvif_path_with_commands<&[u8], Vec<HVIFPointCommand>>,
-  do_parse!(
-    (vec![HVIFPointCommand::HLine { x: 0.0 }])
-  )
-);
+fn hvif_path_with_commands(input: &[u8], command_bytes: Vec<u8>) -> IResult<&[u8], Vec<HVIFPointCommand>>
+{
+  let size = command_bytes.len();
+  return IResult::Done(input, (vec![HVIFPointCommand::HLine { x: size as f32 }]))
+}
 
 named!(hvif_path_with_no_curves<&[u8], Vec<HVIFPointCommand>>,
   do_parse!(
