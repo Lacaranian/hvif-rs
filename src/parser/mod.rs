@@ -2,6 +2,7 @@
 pub mod style;
 pub mod path;
 pub mod shape;
+pub mod util;
 
 use nom::*;
 use types::*;

@@ -2,6 +2,8 @@
 use nom::*;
 use types::*;
 
+use parser::util::*;
+
 named_attr!(#[doc = "Parses an HVIF path"], pub hvif_path<&[u8], HVIFPath>,
   do_parse!(
     flags: be_u8 >>
@@ -75,7 +77,7 @@ fn hvif_path_with_commands(input: &[u8], command_bytes: Vec<u8>) -> IResult<&[u8
 
     IResult::Done(rem_input, points)
   } else {
-    // Incorrect command! Give an error
+    // Incorrect command! Abort the parse, give an error
     IResult::Error(ErrorKind::Custom(0))
   };
 
@@ -96,51 +98,20 @@ named!(hvif_path_point_vertical_line<&[u8], HVIFPointCommand>,
 );
 named!(hvif_path_point_line<&[u8], HVIFPointCommand>,
   do_parse!(
-    point: hvif_path_point >>
+    point: hvif_point >>
     (HVIFPointCommand::Line { point: point })
   )
 );
 named!(hvif_path_point_curve<&[u8], HVIFPointCommand>,
   do_parse!(
-    point: hvif_path_point >>
-    point_in: hvif_path_point >>
-    point_out: hvif_path_point >>
+    point: hvif_point >>
+    point_in: hvif_point >>
+    point_out: hvif_point >>
     (HVIFPointCommand::Curve { point_in: point_in, point: point, point_out: point_out } )
   )
 );
 
 
-named!(hvif_path_point<&[u8], HVIFPoint>,
-  do_parse!(
-    x: hvif_path_coord >>
-    y: hvif_path_coord >>
-    (HVIFPoint { x: x, y: y})
-  )
-);
 
-fn hvif_coord_parser(input: &[u8], first: u8) -> IResult<&[u8], f32>
-{
-  let is_big = first & 0b1000_0000 != 0;
-  let (rem_input, value) = match is_big {
-    true  => {
-      let (i1, second) = try_parse!(input, be_u8);
-      // Hooray! No mem::transmute needed
-      let u16value = ((second as u16) << 8) + (first as u16);
-      let value = ((u16value as f32) / 102.0) - 128.0;
-      (i1, value)
-    },
-    false => {
-      let value = (first as f32) - 32.0;
-      (input, value)
-    },
-  };
 
-  return IResult::Done(rem_input, value)
-}
-named!(hvif_path_coord<&[u8], f32>,
-  do_parse!(
-    first_coord_byte: be_u8 >>
-    coord: apply!(hvif_coord_parser, first_coord_byte) >>
-    (coord)
-  )
-);
+
