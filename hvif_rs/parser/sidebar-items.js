@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["hvif_image","Parses an entire HVIF image"]],"mod":[["path","Parser for HVIF paths"],["shape","Parser for HVIF shapes"],["style","Parser for HVIF styles"],["util","Utility parsers used throughout the HVIF format"]]});

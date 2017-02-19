@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["HVIFGradientType","The type of a gradient - determines how the gradient renders spatially"],["HVIFStyle","A single HVIF style"]],"fn":[["gradient_type_from_u8","Convert a u8 into a gradient type"]],"struct":[["HVIFGradient","A gradient between mutiple aRGB colors"],["HVIFGradientColor","Color of a gradient, along with a stop offset"]]});

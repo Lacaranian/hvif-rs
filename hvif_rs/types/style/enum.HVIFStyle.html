@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `HVIFStyle` enum in crate `hvif_rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, HVIFStyle">
+
+    <title>hvif_rs::types::style::HVIFStyle - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>hvif_rs</a>::<wbr><a href='../index.html'>types</a>::<wbr><a href='index.html'>style</a></p><script>window.sidebarCurrent = {name: 'HVIFStyle', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../../index.html'>hvif_rs</a>::<wbr><a href='../index.html'>types</a>::<wbr><a href='index.html'>style</a>::<wbr><a class='enum' href=''>HVIFStyle</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/hvif_rs/types/style.rs.html#5-30' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum HVIFStyle {
+    SolidColor {
+        red: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        green: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        blue: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        alpha: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+    },
+    Gradient(<a class='struct' href='../../../hvif_rs/types/style/struct.HVIFGradient.html' title='hvif_rs::types::style::HVIFGradient'>HVIFGradient</a>),
+    SolidColorNoAlpha {
+        red: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        green: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        blue: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+    },
+    SolidGray {
+        value: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+        alpha: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+    },
+    SolidGrayNoAlpha {
+        value: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>,
+    },
+}</pre><div class='docblock'><p>A single HVIF style</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.SolidColor' class='variant'><span id='SolidColor.v' class='invisible'><code>SolidColor</code></span></span><div class='docblock'><p>A solid aRGB color</p>
+</div><span class='docblock autohide sub-variant' id='variant.SolidColor.fields'><h3 class='fields'>Fields of <code>SolidColor</code></h3>
+
+                           <table><tr><td id='variant.SolidColor.field.red'><span id='SolidColor.v.red.v' class='invisible'><code>red:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>red channel</p>
+</div></td></tr><tr><td id='variant.SolidColor.field.green'><span id='SolidColor.v.green.v' class='invisible'><code>green:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>green channel</p>
+</div></td></tr><tr><td id='variant.SolidColor.field.blue'><span id='SolidColor.v.blue.v' class='invisible'><code>blue:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>blue channel</p>
+</div></td></tr><tr><td id='variant.SolidColor.field.alpha'><span id='SolidColor.v.alpha.v' class='invisible'><code>alpha:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>alpha channel</p>
+</div></td></tr></table></span><span id='variant.Gradient' class='variant'><span id='Gradient.v' class='invisible'><code>Gradient(<a class='struct' href='../../../hvif_rs/types/style/struct.HVIFGradient.html' title='hvif_rs::types::style::HVIFGradient'>HVIFGradient</a>)</code></span></span><div class='docblock'><p>A gradient between multiple aRGB colors</p>
+</div><span id='variant.SolidColorNoAlpha' class='variant'><span id='SolidColorNoAlpha.v' class='invisible'><code>SolidColorNoAlpha</code></span></span><div class='docblock'><p>A solid opaque RGB color</p>
+</div><span class='docblock autohide sub-variant' id='variant.SolidColorNoAlpha.fields'><h3 class='fields'>Fields of <code>SolidColorNoAlpha</code></h3>
+
+                           <table><tr><td id='variant.SolidColorNoAlpha.field.red'><span id='SolidColorNoAlpha.v.red.v' class='invisible'><code>red:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>red channel</p>
+</div></td></tr><tr><td id='variant.SolidColorNoAlpha.field.green'><span id='SolidColorNoAlpha.v.green.v' class='invisible'><code>green:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>green channel</p>
+</div></td></tr><tr><td id='variant.SolidColorNoAlpha.field.blue'><span id='SolidColorNoAlpha.v.blue.v' class='invisible'><code>blue:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>blue channel</p>
+</div></td></tr></table></span><span id='variant.SolidGray' class='variant'><span id='SolidGray.v' class='invisible'><code>SolidGray</code></span></span><div class='docblock'><p>A solid greyscale color with an alpha channel</p>
+</div><span class='docblock autohide sub-variant' id='variant.SolidGray.fields'><h3 class='fields'>Fields of <code>SolidGray</code></h3>
+
+                           <table><tr><td id='variant.SolidGray.field.value'><span id='SolidGray.v.value.v' class='invisible'><code>value:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>value on red, green, and blue channels</p>
+</div></td></tr><tr><td id='variant.SolidGray.field.alpha'><span id='SolidGray.v.alpha.v' class='invisible'><code>alpha:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>alpha channel</p>
+</div></td></tr></table></span><span id='variant.SolidGrayNoAlpha' class='variant'><span id='SolidGrayNoAlpha.v' class='invisible'><code>SolidGrayNoAlpha</code></span></span><div class='docblock'><p>A solid greyscale color without an alpha channel</p>
+</div><span class='docblock autohide sub-variant' id='variant.SolidGrayNoAlpha.fields'><h3 class='fields'>Fields of <code>SolidGrayNoAlpha</code></h3>
+
+                           <table><tr><td id='variant.SolidGrayNoAlpha.field.value'><span id='SolidGrayNoAlpha.v.value.v' class='invisible'><code>value:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></span></td><td><div class='docblock'><p>value on red, green, and blue channels</p>
+</div></td></tr></table></span><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../../hvif_rs/types/style/enum.HVIFStyle.html' title='hvif_rs::types::style::HVIFStyle'>HVIFStyle</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/hvif_rs/types/style.rs.html#3' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "hvif_rs";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["HVIFPointCommand","One or more points, and a command that specifies how the point/s are to be interpreted"]],"struct":[["HVIFPath","An HVIF path, drawn between points"],["HVIFPoint","A simple 2D point in the XY plane, where each coordinate is a floating point value"]]});

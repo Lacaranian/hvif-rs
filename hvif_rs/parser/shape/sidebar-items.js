@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["hvif_shape","Parses an HVIF shape"]]});

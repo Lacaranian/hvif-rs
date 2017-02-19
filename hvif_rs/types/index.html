@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `types` mod in crate `hvif_rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, types">
+
+    <title>hvif_rs::types - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>hvif_rs</a></p><script>window.sidebarCurrent = {name: 'types', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>hvif_rs</a>::<wbr><a class='mod' href=''>types</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/hvif_rs/types/mod.rs.html#1-64' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Types for HVIF images</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::<a class='mod' href='../../hvif_rs/types/style/index.html' title='hvif_rs::types::style'>style</a>::*;</code></td></tr><tr><td><code>pub use self::<a class='mod' href='../../hvif_rs/types/path/index.html' title='hvif_rs::types::path'>path</a>::*;</code></td></tr><tr><td><code>pub use self::<a class='mod' href='../../hvif_rs/types/shape/index.html' title='hvif_rs::types::shape'>shape</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='path/index.html'
+                                  title='hvif_rs::types::path'>path</a></td>
+                           <td class='docblock-short'>
+                                <p>Types for HVIF paths</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='shape/index.html'
+                                  title='hvif_rs::types::shape'>shape</a></td>
+                           <td class='docblock-short'>
+                                <p>Types for HVIF shapes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='style/index.html'
+                                  title='hvif_rs::types::style'>style</a></td>
+                           <td class='docblock-short'>
+                                <p>Types for HVIF styles</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.HVIFFlag.html'
+                                  title='hvif_rs::types::HVIFFlag'>HVIFFlag</a></td>
+                           <td class='docblock-short'>
+                                <p>Flags that modify the parsing of the following data</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.HVIFImage.html'
+                                  title='hvif_rs::types::HVIFImage'>HVIFImage</a></td>
+                           <td class='docblock-short'>
+                                <p>A fully specified HVIF image</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_GRADIENT_FLAG_COLORS_16_BIT.html'
+                                  title='hvif_rs::types::HVIF_GRADIENT_FLAG_COLORS_16_BIT'>HVIF_GRADIENT_FLAG_COLORS_16_BIT</a></td>
+                           <td class='docblock-short'>
+                                <p>The colors in this gradient have a deeper color depth per channel of 16 bits, instead of 8</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_GRADIENT_FLAG_GRAYS.html'
+                                  title='hvif_rs::types::HVIF_GRADIENT_FLAG_GRAYS'>HVIF_GRADIENT_FLAG_GRAYS</a></td>
+                           <td class='docblock-short'>
+                                <p>The colors in this gradient are all grayscale</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_GRADIENT_FLAG_NO_ALPHA.html'
+                                  title='hvif_rs::types::HVIF_GRADIENT_FLAG_NO_ALPHA'>HVIF_GRADIENT_FLAG_NO_ALPHA</a></td>
+                           <td class='docblock-short'>
+                                <p>The colors in this gradient have no alpha channel</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_GRADIENT_FLAG_TRANSFORM.html'
+                                  title='hvif_rs::types::HVIF_GRADIENT_FLAG_TRANSFORM'>HVIF_GRADIENT_FLAG_TRANSFORM</a></td>
+                           <td class='docblock-short'>
+                                <p>?</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_PATH_FLAG_CLOSED.html'
+                                  title='hvif_rs::types::HVIF_PATH_FLAG_CLOSED'>HVIF_PATH_FLAG_CLOSED</a></td>
+                           <td class='docblock-short'>
+                                <p>The path&#39;s last point is connected to its first point</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_PATH_FLAG_NO_CURVES.html'
+                                  title='hvif_rs::types::HVIF_PATH_FLAG_NO_CURVES'>HVIF_PATH_FLAG_NO_CURVES</a></td>
+                           <td class='docblock-short'>
+                                <p>The path is made up entirely of straight lines</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_PATH_FLAG_USES_COMMANDS.html'
+                                  title='hvif_rs::types::HVIF_PATH_FLAG_USES_COMMANDS'>HVIF_PATH_FLAG_USES_COMMANDS</a></td>
+                           <td class='docblock-short'>
+                                <p>The path has a command section, and can use HLine and VLine commands</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_SHAPE_FLAG_HAS_TRANSFORMERS.html'
+                                  title='hvif_rs::types::HVIF_SHAPE_FLAG_HAS_TRANSFORMERS'>HVIF_SHAPE_FLAG_HAS_TRANSFORMERS</a></td>
+                           <td class='docblock-short'>
+                                <p>?</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_SHAPE_FLAG_HINTING.html'
+                                  title='hvif_rs::types::HVIF_SHAPE_FLAG_HINTING'>HVIF_SHAPE_FLAG_HINTING</a></td>
+                           <td class='docblock-short'>
+                                <p>?</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_SHAPE_FLAG_LOD_SCALE.html'
+                                  title='hvif_rs::types::HVIF_SHAPE_FLAG_LOD_SCALE'>HVIF_SHAPE_FLAG_LOD_SCALE</a></td>
+                           <td class='docblock-short'>
+                                <p>?</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_SHAPE_FLAG_TRANSFORM.html'
+                                  title='hvif_rs::types::HVIF_SHAPE_FLAG_TRANSFORM'>HVIF_SHAPE_FLAG_TRANSFORM</a></td>
+                           <td class='docblock-short'>
+                                <p>This shape uses an affine transformation matrix to translate, rotate, and scale itself</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.HVIF_SHAPE_FLAG_TRANSLATION.html'
+                                  title='hvif_rs::types::HVIF_SHAPE_FLAG_TRANSLATION'>HVIF_SHAPE_FLAG_TRANSLATION</a></td>
+                           <td class='docblock-short'>
+                                <p>?</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "hvif_rs";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
